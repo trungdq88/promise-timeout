@@ -1,5 +1,7 @@
-export function TimeoutError(message) {
-  this.message = message;
+export class TimeoutError extends Error {
+  constructor(message) {
+    super(message);
+  }
 }
 
 TimeoutError.prototype = Error.prototype;
