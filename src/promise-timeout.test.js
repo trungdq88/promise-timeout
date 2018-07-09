@@ -1,4 +1,4 @@
-import timeout from './promise-timeout.js';
+import timeout, { TimeoutError } from './promise-timeout.js';
 
 describe('timeout', () => {
   it('resolves', async () => {
@@ -14,7 +14,7 @@ describe('timeout', () => {
       new Promise(r => setTimeout(() => r(2), 300)),
       100,
     ).catch(_ => _);
-    expect(test2).toBeInstanceOf(Error);
+    expect(test2).toBeInstanceOf(TimeoutError);
     expect(test2.message).toBe('Timeout');
   });
 });
